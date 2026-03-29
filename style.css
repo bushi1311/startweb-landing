@@ -1,62 +1,176 @@
-/* RESET BASE */
+/* =======================
+   RESET BASE
+======================= */
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-/* HERO */
-.hero {
-    height: 100vh;
-    background: linear-gradient(135deg, #000000, #000000);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 20px; /* piccolo padding per mobile */
-}
-.hero h1 {
-    font-size: 4em;
-    margin-bottom: 0.5em;
-}
-.hero p {
-    font-size: 1.8em;
-    margin-bottom: 1.5em;
-}
-
-.btn {
-    background-color: #ffffff;
-    color: #000000;
-    text-decoration: none;
-    padding: 0.8em 2em;
-    border-radius: 50px;
-    font-weight: 600;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-}
-
-.btn:hover {
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    font-family: 'Poppins', Arial, sans-serif;
 }
 
 body {
     font-family: 'Poppins', Arial, sans-serif;
 }
 
+/* =======================
+   NAVBAR CON LOGO
+======================= */
+.navbar {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+}
+
+.navbar img {
+    height: 120px; /* logo grande */
+}
+
+/* =======================
+   HERO
+======================= */
+.hero {
+    min-height: 100vh; /* occupa tutto lo schermo */
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px; /* piccolo padding su mobile */
+}
+
+.hero h1 {
+    font-size: 4em;
+    margin-bottom: 0.5em;
+    letter-spacing: -1px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.hero p {
+    font-size: 1.4em;
+    margin-bottom: 2em;
+    max-width: 500px;
+    opacity: 0.85;
+    text-shadow: 0.5px 0.5px 2px rgba(0,0,0,0.3);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease forwards;
+    animation-delay: 0.2s;
+}
+
+/* =======================
+   BOTTONI VERTICALI
+======================= */
+/* BOTTONI VERTICALI UNIFICATI */
+.instagram-btn,
+.email-btn {
+    display: block;
+    width: 280px;      /* larghezza fissa */
+    text-align: center;
+    padding: 1em 0;
+    border-radius: 50px;
+    font-weight: 600;
+    color: black;
+    background-color: white;
+    text-decoration: none;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    transition: all 0.25s ease;
+    transform: scale(1);
+    margin: 15px 0;    /* aumenta spazio verticale tra i bottoni */
+}
+
+/* Hover sul bottone attivo: cresce e resta bianco */
+.instagram-btn:hover,
+.email-btn:hover {
+    transform: translateY(-2px) scale(1.05); /* aumenta dimensione */
+    background-color: white;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+}
+
+/* Bottone fratello diventa grigio */
+.instagram-btn:hover + .email-btn,
+.email-btn:hover + .instagram-btn {
+    background-color: #f0f0f0;
+}
+
+/* =======================
+   ANIMAZIONE BOTTONI
+======================= */
+.hero .instagram-btn,
+.hero .email-btn {
+    opacity: 0;
+    transform: translateY(20px) scale(1);
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.hero .instagram-btn {
+    animation-delay: 0.4s;
+}
+
+.hero .email-btn {
+    animation-delay: 0.5s;
+}
+
+/* =======================
+   FOOTER
+======================= */
+.footer {
+    text-align: center;
+    padding: 20px 10px;
+    background-color: #000; /* mantiene il tema scuro */
+    color: #fff;
+    font-size: 0.9em;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.footer a:hover {
+    color: #ddd;
+}
+
+/* =======================
+   ANIMAZIONI
+======================= */
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =======================
+   RESPONSIVE
+======================= */
 @media (max-width: 600px) {
     .hero h1 {
-        font-size: 2.5em;
+        font-size: 2.2em;
     }
     .hero p {
-        font-size: 1.2em;
+        font-size: 1em;
+        max-width: 90%;
     }
     .btn {
-        padding: 0.6em 1.5em;
+        width: 90%;         /* occupano quasi tutta la larghezza del telefono */
+        padding: 0.8em 0;   /* solo padding verticale */
+        font-size: 1em;
+    }
+    .navbar img {
+        height: 80px;       /* logo più piccolo su mobile */
+    }
+    .instagram-btn,
+    .email-btn {
+        margin: 20px 0;
     }
 }
