@@ -207,6 +207,9 @@ body {
     .navbar img {
     height: 90px;
     }
+    .hero {
+    padding-top: 80px;
+    }
     .hero h1 {
         font-size: 2.2em;
     }
